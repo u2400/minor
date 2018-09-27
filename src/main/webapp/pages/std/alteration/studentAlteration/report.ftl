@@ -1,0 +1,1 @@
+<#include "report/" + RequestParameters["reportTemplate"]?default("delay1") + ".ftl"/>

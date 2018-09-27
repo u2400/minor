@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- 学生替代课程表 -->
+<hibernate-mapping>
+	<class name="com.ekingstar.eams.teach.program.std.DefaultStdSubstituteCourse" 
+	entity-name="com.ekingstar.eams.teach.program.std.StdSubstituteCourse"
+	
+	table="PYFA_TDKC_T">
+		<id name="id" column="ID" unsaved-value="null">
+			<generator class="sequence">
+				<param name="sequence">SEQ_PYFA_TDKC_T</param>
+			</generator>
+		</id>
+		<many-to-one name="std" column="XSID" not-null="true"/>
+        <set name="origins" table="PYFA_TDKC_THQKC_T">
+            <key column="TDKCID" not-null="true"/>
+            <many-to-many class="com.shufe.model.system.baseinfo.Course"
+                column="KCID"/>
+        </set>
+        <set name="substitutes" table="PYFA_TDKC_THHKC_T">
+            <key column="TDKCID" not-null="true"/>
+            <many-to-many class="com.shufe.model.system.baseinfo.Course"
+                column="KCID"/>
+        </set>
+		<property name="createAt" column="ZDSJ"/>
+		<property name="modifyAt" column="XGSJ"/>
+        <many-to-one name="operateBy" column="CZR" not-null="true"/>
+		<property name="remark" column="BZ" length="500"/>
+	</class>
+</hibernate-mapping>

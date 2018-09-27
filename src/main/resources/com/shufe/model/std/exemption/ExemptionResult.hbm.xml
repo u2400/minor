@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.shufe.model.std.exemption" >
+    <!-- 学生_推免_申请结果_表 -->
+	<class name="ExemptionResult" table="XS_TM_SQJG_T">
+		<id name="id" column="ID">
+			<generator class="sequence">
+				<param name="sequence">SEQ_XS_TM_SQJG_T</param>
+			</generator>
+		</id>
+		<property name="schoolName" column="XXMC" not-null="true"/>
+		<many-to-one name="student" column="XSID" not-null="true"/>
+		<many-to-one name="applyType" column="TMSQLXID" not-null="true"/>
+		<property name="majorName" column="SQZYMC" not-null="true"/>
+		<many-to-one name="calendar" column="JXRLID" not-null="true"/>
+		<!-- 是否专业调剂 -->
+		<property name="isAllowMajor" column="SFZYTJ" not-null="true"/>
+		<!-- 是否接收学术型调剂 -->
+		<property name="isAllowAcademic" column="SFJSXSXTJ" not-null="true"/>
+		<!-- 是否接收专业学位调剂 -->
+		<property name="isAllowDegree" column="SFJSZYXWTJ" not-null="true"/>
+		<property name="createAt" column="CJSJ" not-null="true"/>
+		<property name="updateAt" column="GXSJ" not-null="true"/>
+	</class>
+</hibernate-mapping>

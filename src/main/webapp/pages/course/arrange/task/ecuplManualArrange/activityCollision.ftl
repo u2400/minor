@@ -1,0 +1,1 @@
+<#include "/pages/course/arrange/task/manualArrange/activityCollision.ftl"/>

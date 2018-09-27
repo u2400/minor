@@ -1,0 +1,19 @@
+/*系统顶层的几个大菜单的样式*/
+.menuSelected 		  {font-size: 12px;color:#FEA901;text-decoration: none;font-weight: bold;height: 1px;}
+.menu_blue_13px2 		  {font-size: 13px;color:white ;text-decoration: none;font-weight: bold;height: 1px;}
+.menu_blue_13px2 a		  {font-size: 14px;color: #004393;text-decoration: none;font-weight: bold;height: 1px;}
+.menu_blue_13px2 a:hover  {font-size: 14px;color: #004393;text-decoration: none;font-weight: bold;height: 1px;}
+.menu_blue_13px2 a:active {font-size: 14px;color: #004393;text-decoration: underline;font-weight: bold;height: 1px;}
+
+.menu_blue_16px2 		 {font-size: 16px;color: #004393;text-decoration: none;font-weight: bold;height: 1px;}
+.menu_blue_16px2 a		 {font-size: 16px;color: #004393;text-decoration: none;font-weight: bold;height: 1px;}
+.menu_blue_16px2 a:hover {font-size: 16px;color: #004393;text-decoration: none;font-weight: bold;height: 1px;}
+
+.menu_second 		  {font-size: 12px;color: #FFFFFF;text-decoration: none;}
+.menu_second  a		  {font-size: 12px;color: #FFFFFF;text-decoration: none;}
+.menu_second  a:hover {font-size: 12px;color: #FF9600;text-decoration: none;}
+
+.menu_blue_12pxorange 				{font-size: 12px;color: #004393;text-decoration: none;font-weight: bold;}
+.menu_blue_12pxorange   a			{font-size: 12px;color: #004393;text-decoration: none;font-weight: bold;}
+.menu_blue_12pxorange   a:hover		{font-size: 12px;color: #FF9600;text-decoration: none;font-weight: bold;}
+.menu_blue_12pxorange   a:active    {font-size: 12px;color: #FF9600;text-decoration: underline;font-weight: bold;}

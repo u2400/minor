@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- 毕业实习基地选课开关配置 -->
+<hibernate-mapping package="com.shufe.model.course.arrange.base">
+    <class name="SwitchPlace" table="BYSXJD_XKKG_PZ_T">
+        <id name="id" column="id" unsaved-value="null">
+            <generator class="sequence">
+                <param name="sequence">SEQ_BYSXJD_XKKG_PZ_T</param>
+            </generator>
+        </id>
+        <many-to-one name="placeSwitch" column="KGPZID" not-null="true"/>
+        <many-to-one name="place" column="BYSXJDID" not-null="true"/>
+        <!-- 人数上限 -->
+        <property name="limitCount" column="RSSX" not-null="true"/>
+        <!-- 实际人数 -->
+        <property name="stdCount" column="SJRS" not-null="true"/>
+        <set name="takes">
+            <!-- 开关配置ID -->
+            <key column="KGPZID"/>
+            <!-- 选课学生ID -->
+            <one-to-many class="PlaceTake"/>
+        </set>
+    </class>
+</hibernate-mapping>

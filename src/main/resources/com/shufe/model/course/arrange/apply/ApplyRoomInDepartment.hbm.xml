@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.shufe.model.course.arrange.apply">
+	<!--教室借用表-->
+    <class name="ApplyRoomInDepartment" table="JXYX_JSSQ_JSFP_T">
+        <id name="id" column="ID" unsaved-value="null">
+            <generator class="sequence">
+                <param name="sequence">SEQ_JXYX_JSSQ_JSFP_T</param>
+            </generator>
+        </id>
+        <many-to-one name="department" column="FPBMID" not-null="true"/>
+        <set name="rooms" table="JXYX_JSSQ_JSFP_JS_T">
+            <key column="JSFPID"/>
+            <many-to-many column="JSID" class="com.shufe.model.system.baseinfo.Classroom"/>
+        </set>
+        <many-to-one name="createdBy" column="CJR" not-null="true"/>
+        <many-to-one name="updatedBy" column="XGR" not-null="true"/>
+        <property name="createdOn" column="CJSJ" not-null="true"/>
+        <property name="updatedOn" column="GXSJ" not-null="true"/>
+    </class>
+</hibernate-mapping>

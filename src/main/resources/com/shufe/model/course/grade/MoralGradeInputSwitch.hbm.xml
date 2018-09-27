@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.shufe.model.course.grade">
+    <class name="MoralGradeInputSwitch" table="CJ_DYLRKG_T">
+        <id name="id" column="id" unsaved-value="null">
+            <generator class="sequence">
+                <param name="sequence">SEQ_CJ_DYLRKG_T</param>
+            </generator>
+        </id>
+        <many-to-one name="calendar" column="JXRLID" not-null="true"/>
+        <property name="beginOn" column="KSRQ"/>
+        <property name="endOn" column="JSRQ"/>
+        <property name="opened" column="SFKF" length="1"/>
+    </class>
+</hibernate-mapping>

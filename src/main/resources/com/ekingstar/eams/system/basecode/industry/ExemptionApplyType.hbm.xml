@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.ekingstar.eams.system.basecode.industry">
+	<class name="ExemptionApplyType" table="BZHB_TMSQLX_T">
+		<id name="id" column="ID" unsaved-value="null">
+			<generator class="sequence">
+				<param name="sequence">SEQ_BZHB_TMSQLX_T</param>
+			</generator>
+		</id>
+		<property name="code" not-null="true" column="TMSQLXDM" length="32"
+			unique="true"/>
+		<property name="name" not-null="true" column="TMSQLXMC" length="100"/>
+		<property name="engName" column="TMSQLXMC_EN" length="100"/>
+		<property name="createAt" column="ZDSJ" not-null="true"/>
+		<property name="modifyAt" column="XGSJ" not-null="true"/>
+		<property name="state" column="SFSY" not-null="true"/>
+	</class>
+</hibernate-mapping>

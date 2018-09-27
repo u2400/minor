@@ -1,0 +1,23 @@
+    /*动态树形菜单样式表*/
+    .MenuTocItemFolderNoLinkStyle
+    {
+        FONT-WEIGHT: normal; FONT-SIZE: 9pt; COLOR: gray;  TEXT-DECORATION: none
+    }
+
+    a.MenuTocItemFolderLinkStyle:link    {FONT-WEIGHT: normal; FONT-SIZE: 10pt; COLOR: black;    TEXT-DECORATION: }
+    a.MenuTocItemFolderLinkStyle:visited {FONT-WEIGHT: normal; FONT-SIZE: 10pt; COLOR: black;  TEXT-DECORATION: }
+    a.MenuTocItemFolderLinkStyle:active  {FONT-WEIGHT: normal; FONT-SIZE: 10pt; COLOR: red;     TEXT-DECORATION: }
+    a.MenuTocItemFolderLinkStyle:hover   {FONT-WEIGHT: normal; FONT-SIZE: 10pt; COLOR: blue;    TEXT-DECORATION: }
+
+    .MenuTocItemNoLinkStyle{FONT-WEIGHT: normal; FONT-SIZE: 9pt; COLOR: gray; }
+
+
+    a.MenuTocItemLinkStyle:link    {FONT-WEIGHT: normal; FONT-SIZE: 9pt; COLOR: black;    TEXT-DECORATION: }
+    a.MenuTocItemLinkStyle:visited {FONT-WEIGHT: normal; FONT-SIZE: 9pt; COLOR: black;  TEXT-DECORATION: }
+    a.MenuTocItemLinkStyle:active  {FONT-WEIGHT: normal; FONT-SIZE: 9pt; COLOR: red;     TEXT-DECORATION: }
+    a.MenuTocItemLinkStyle:hover   {FONT-WEIGHT: normal; FONT-SIZE: 9pt; COLOR: blue;    TEXT-DECORATION: }
+
+    .MenuTocSelected    {FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND-COLOR: lightblue; COLOR: red;  TEXT-DECORATION: }
+    .MenuTocNotSelected {FONT-WEIGHT: normal; FONT-SIZE: 9pt; COLOR: gray;  TEXT-DECORATION: }
+    .MenuTocClicked     {FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND-COLOR: white; COLOR: black;  TEXT-DECORATION: }
+

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class
+        name="com.ekingstar.eams.teach.abilityrate.model.InterviewInfo"
+        table="KCFJ_MSXX_T">
+        <id name="id" column="ID" unsaved-value="null">
+            <generator class="sequence">
+                <param name="sequence">SEQ_KCFJ_MSXX_T</param>
+            </generator>
+        </id>
+        <many-to-one name="config" column="PZID" not-null="true"/>
+        <many-to-one name="room" column="JSID" not-null="true"/>
+        <property name="maxviewer" column="ZDRS" not-null="true"/>
+        <property name="beginAt" column="KSSJ" not-null="true"/>
+        <property name="endAt" column="JZSJ" not-null="true"/>
+    </class>
+</hibernate-mapping>

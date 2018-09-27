@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="false">
+	<!-- 奖学金_规则项_表 -->
+	<class
+		name="com.shufe.model.course.scholarship.comprehensive.ScoreStatisticRuleItem"
+		table="JXJ_GZX_T">
+		<id name="id" column="ID" unsaved-value="null">
+			<generator class="sequence">
+				<param name="sequence">SEQ_JXJ_GZX_T</param>
+			</generator>
+		</id>
+		<property name="name" column="GZXMC" not-null="true" />
+		<property name="abbreviation" column="GZXJC" not-null="true" />
+		<set name="courseTypes" table="JXJ_GZX_KCLB_T">
+			<key column="GZXID" />
+			<many-to-many column="KCLBID"
+				class="com.ekingstar.eams.system.basecode.industry.CourseType" />
+		</set>
+		<set name="otherExamCategories" table="JXJ_GZX_QTKSLB_T">
+			<key column="GZXID" />
+			<many-to-many column="QTKSLBID"
+				class="com.ekingstar.eams.system.basecode.industry.OtherExamCategory" />
+		</set>
+		<set name="courses" table="JXJ_GZX_KC_T">
+			<key column="GZXID" />
+			<many-to-many column="KCID"
+				class="com.shufe.model.system.baseinfo.Course" />
+		</set>
+		<set name="excludeCourses" table="JXJ_GZX_BCKC_T">
+			<key column="GZXID" />
+			<many-to-many column="KCID"
+				class="com.shufe.model.system.baseinfo.Course" />
+		</set>
+		<!-- 是否（加入）德育成绩 -->
+		<property name="educationScore" column="SFDYCJ" not-null="true" />
+		<!-- 统计记录方式 -->
+		<many-to-one name="mode" column="TJJRFSID" not-null="true" />
+		<!-- 是否（作为）查询条件 -->
+		<property name="condition" column="SFCXTJ" not-null="true" />
+		<!-- 是否（作为）默认导出 -->
+		<property name="export" column="SFMRDC" not-null="true" />
+	</class>
+</hibernate-mapping>

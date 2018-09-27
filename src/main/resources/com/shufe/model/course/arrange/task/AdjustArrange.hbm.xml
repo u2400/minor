@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- 调停课 -->
+<hibernate-mapping package="com.shufe.model.course.arrange.task">
+    <class name="AdjustArrange" table="TTK_T">
+        <id name="id" column="id" unsaved-value="null">
+            <generator class="sequence">
+                <param name="sequence">SEQ_TTK_T</param>
+            </generator>
+        </id>
+        <many-to-one name="task" column="JXRWID" not-null="true"/>
+        <many-to-one name="teacher" column="JSID" not-null="true"/>
+        <property name="beenInfo" column="SKXX" not-null="true"/>
+        <!-- 调停状态 -->
+        <property name="status" column="TTZT" not-null="true"/>
+        <!-- 申请时间信息 -->
+        <property name="applyInfo" column="SQSJXX" not-null="true"/>
+        <property name="isPassed" column="SFTG"/>
+        <many-to-one name="auditBy" column="SPRID"/>
+        <property name="passedAt" column="SPSJ"/>
+        <property name="isFinalOk" column="SFZSTG"/>
+        <property name="finalReason" column="ZSLY" length="500"/>
+        <many-to-one name="room" column="FPJSID"/>
+        <many-to-one name="finalBy" column="ZSRID"/>
+        <property name="finalAt" column="ZSSJ"/>
+        <property name="createdAt" column="SCSJ" not-null="true"/>
+        <property name="updatedAt" column="XGSJ" not-null="true"/>
+        <property name="remark" column="BZ"/>
+     </class>
+</hibernate-mapping>

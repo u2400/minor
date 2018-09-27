@@ -1,0 +1,69 @@
+
+body { background-color: White; margin: 10px; padding: 0px; font-family: Verdana, Helvetica, Sans-Serif; }
+a { text-decoration: none; color: #0860a8; }
+a:hover { text-decoration: underline; }
+img { border: none; }
+
+#page { display: block; position: relative; width: 760px; height: auto; margin: 0px auto; padding: 0px; }
+
+/* Header */
+#header { display: block; position: relative; width: 760px; height: 80px; background-image: url(/images/header.gif); }
+#tab-home { display: block; position: absolute; left: 164px; top: 45px; width: 47px; height: 23px; }
+#tab-vision { display: block; position: absolute; left: 222px; top: 45px; width: 125px; height: 23px; }
+#tab-industry { display: block; position: absolute; left: 358px; top: 45px; width: 98px; height: 23px; }
+#tab-technologies { display: block; position: absolute; left: 467px; top: 45px; width: 151px; height: 23px; }
+#tab-third-party { display: block; position: absolute; left: 629px; top: 45px; width: 120px; height: 23px; }
+
+/* Footer */
+.footer-break { clear: both; }
+#footer { display: block; position: relative; width: 760px; height: auto; font-size: 9px; }
+#footer-line { display: block; border-bottom: solid 2px #bababa; line-height: 1px; margin-top: 20px; margin-bottom: 8px; }
+#footer-links { display: inline; float: left; margin-left: 15px; }
+.footer-link { display: inline; color: #0860a8; }
+#footer-copyright { display: inline; float: right; margin-right: 15px; color: #bababa; }
+
+/* Modules */
+.module { display: block; float: right; vertical-align: top; width: 178px; height: auto; border-left: solid 12px White; border-bottom: solid 12px White; background-color: White; }
+.module-top { display: block; width: 178px; height: 5px; line-height:1px; background: White url(/images/module-top.gif) no-repeat scroll bottom; }
+.module-title { display: block; width: 158; height: auto; padding: 4px 10px 9px 10px; vertical-align: top; color: #000000; font-size: 12px; font-weight: bold; background-image: url(/images/module-title.gif); }
+.module-content-area { display: block; width: 158px; height: auto; padding: 10px; background-image: url(/images/module-content-area.gif); vertical-align: top; color: #666666; font-size: 11px; line-height: 13px; }
+.module-bottom { display: block; width: 178px; height: 5px; line-height: 1px; background: White url(/images/module-bottom.gif) no-repeat scroll top; }
+.module-photo { display: block; width: 178px; height: 63px; }
+.module-line { display: block; border-bottom-style: solid; border-bottom-width: 1px; border-color: #a6a6a6; line-height: 1px; margin-top: 8px; margin-bottom: 8px; }
+
+.module-subhead { display: block; font-weight: bold; }
+.module-action { display: block; color: #0860a8; font-weight: bold; margin-top: 7px; }
+.module-link { display: block; color: #0860a8; margin-top: 7px; }
+
+/* Index */
+#index-links { display: block; float: left; width: 540px; height: auto; margin: 7px 0px 0px 15px; font-size: 11px; color: #666666; }
+.index-link { display: block; color: #0860a8; font-size: 12px; line-height: 17px; font-weight: bold; }
+.index-line { display: block; width: 540px; height: 1px; margin: 15px 0px 14px 0px; background: White url(/images/index-line.gif) no-repeat scroll center; }
+.index-inline-link { font-size: 11px; line-height: 13px; color: #0860a8; font-weight: bold; }
+
+/* Contents */
+#page-contents { display: block; width: 745px; height: auto; margin-left: 15px; }
+#page-trail { display: block; width: auto; height: auto; font-size: 10px; }
+.page-trail-link { color: #666666; }
+#page-title { display: block; width: 730px; height: auto; font-size: 21px; color: Black; margin-top: 7px; margin-bottom: 23px; }
+#page-title-subhead { display: block; width: auto; height: auto; font-size: 14px; line-height: 20px; font-weight: bold; color: #0860a8; }
+#page-copy { display: block; width: 745px; height: auto; font-size: 12px; line-height: 17px; color: #666666; }
+#page-copy-start { display: block; width: auto; height: 5px; line-height: 1px; }
+#page-photo { display: block; width: 760px; height: 149px; margin-bottom: 10px; }
+
+.subhead { display: block; font-weight: bold; color: Black; font-size: 12px; line-height: 17px; }
+.subhead-question { color: #0860a8; }
+.subhead-line { display: block; width: auto; border-bottom-style: solid; border-bottom-width: 1px; border-color: #a6a6a6; line-height: 1px; margin-top: 4px; margin-bottom: 5px; }
+
+.super { font-size: 50%; vertical-align: text-top; }
+
+/* TOC */
+.toc { display: block; width: 745px; height: auto; margin-bottom: 20px; }
+.toc-top { display: block; width: 745; height: 6px; line-height: 1px; background: White url(/images/toc-top.gif) no-repeat scroll bottom; }
+.toc-content-area { display: block; width: 745; height: auto; padding: 9px; background-image: url(/images/toc-content-area.gif); vertical-align: top; }
+.toc-content-area-left { display: block; float: left; width: 352px; height: auto; vertical-align: top; font-size: 11px; line-height: 13px; }
+.toc-content-area-right { display: block; float: right; width: 352px; height: auto; vertical-align: top; font-size: 11px; line-height: 13px; }
+.toc-content-area-break { clear: both; line-height: 1px; }
+.toc-bottom { display: block; width: 745; height: 6px; line-height: 1px; background: White url(/images/toc-bottom.gif) no-repeat scroll bottom; }
+.toc-link { display: block; width: 332px; height: auto; padding-left: 10px; padding-right: 10px; background: White url(/images/toc-arrow.gif) no-repeat scroll left top; font-size: 11px; line-height: 13px; color: #0860a8; }
+.toc-line { display: block; width: auto; height: 6px; font-size: 1px; line-height: 1px; }

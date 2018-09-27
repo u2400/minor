@@ -1,0 +1,1 @@
+<#include "../roomApply/freeRoomList.ftl"/>

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.shufe.model.course.scholarship.comprehensive"
+	auto-import="false">
+	<!-- 奖学金_统计结果_表 -->
+	<class name="ScoreStatisticResult" table="JXJ_TJJG_T">
+		<id name="id" column="ID" unsaved-value="null">
+			<generator class="sequence">
+				<param name="sequence">SEQ_JXJ_TJJG_T</param>
+			</generator>
+		</id>
+		<many-to-one name="calendar" column="JXRLID" not-null="true" />
+		<many-to-one name="student" column="XSID" not-null="true" />
+		<set name="items" inverse="true" cascade="all-delete-orphan">
+			<key column="TJJGID" />
+			<one-to-many class="ScoreStatisticResultItem" />
+		</set>
+		<property name="sumScore" column="ZF" not-null="true" />
+		<many-to-one name="userBy" column="TJR" not-null="true" />
+		<!-- 统计时间 -->
+		<property name="accountAt" column="TJSJ" not-null="true" />
+	</class>
+	<!-- 奖学金_统计结果_项_表 -->
+	<class name="ScoreStatisticResultItem" table="JXJ_TJJG_X_T">
+		<id name="id" column="ID" unsaved-value="null">
+			<generator class="sequence">
+				<param name="sequence">SEQ_JXJ_TJJG_X_T</param>
+			</generator>
+		</id>
+		<many-to-one name="result" column="TJJGID" not-null="true" />
+		<many-to-one name="itemValue" column="GZJQID" not-null="true" />
+		<!-- 得分 -->
+		<property name="score" column="DF" not-null="true" />
+	</class>
+</hibernate-mapping>

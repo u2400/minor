@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.shufe.model.course.scholarship.comprehensive"
+	auto-import="false">
+	<!-- 奖学金_记录方式_表 -->
+	<class name="ScoreStatisticMode" table="JXJ_JRFS_T">
+		<id name="id" column="ID" unsaved-value="null">
+			<generator class="sequence">
+				<param name="sequence">SEQ_JXJ_JRFS_T</param>
+			</generator>
+		</id>
+		<property name="name" column="JRFSMC" not-null="true" />
+		<many-to-one name="markStyle" column="CJJRFSID" not-null="true" />
+		<set name="items" inverse="true" cascade="all-delete-orphan">
+			<key column="JRFSID" />
+			<one-to-many class="ScoreStatisticModeItem" />
+		</set>
+		<!-- 是否（以原）成绩得分（统计）-->
+		<property name="gradeScore" column="SFCJDF" not-null="true" />
+		<!-- 是否数值查询-->
+		<property name="scoreValue" column="SFSZCX" not-null="true" />
+		<!-- 是否允许修改 -->
+		<property name="allowModify" column="SFYXXG" not-null="true" />
+	</class>
+	<!-- 奖学金_记录方式_项_表 -->
+	<class name="ScoreStatisticModeItem" table="JXJ_JRFS_X_T">
+		<id name="id" column="ID" unsaved-value="null">
+			<generator class="sequence">
+				<param name="sequence">SEQ_JXJ_JRFS_X_T</param>
+			</generator>
+		</id>
+		<many-to-one name="mode" column="JRFSID" not-null="true" />
+		<!-- 项名称 -->
+		<property name="name" column="XMC" not-null="true" />
+		<!-- 项值 -->
+		<property name="value" column="XZ"/>
+	</class>
+</hibernate-mapping>

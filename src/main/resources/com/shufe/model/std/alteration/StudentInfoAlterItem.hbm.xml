@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.shufe.model.std.alteration" >
+
+	<class name="StudentInfoAlterItem" table="XSXX_XGSQ_MX_T">
+		<id name="id" column="ID"  unsaved-value="null">
+			<generator class="sequence">
+				<param name="sequence">SEQ_XSXX_XGSQ_MX_T</param>
+			</generator>
+		</id>
+		<many-to-one name="apply" column="SQID" not-null="true"/>
+		<many-to-one name="meta" column="XMID"/>
+		<property name="oldValue"  column="JZ"/>
+		<property name="newValue"  column="XZ"/>
+	</class>
+	
+</hibernate-mapping>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- 培养计划课程组表 -->
+<hibernate-mapping package="com.shufe.model.course.plan.major">
+	<class name="MajorPlanCourse" table="PYJH_ZY_KC_T">
+		<id name="id" column="ID" unsaved-value="null">
+			<generator class="sequence">
+				<param name="sequence">SEQ_PYJH_ZY_KC_T</param>
+			</generator>
+		</id>
+		
+		<many-to-one name="course" column="KCID" not-null="true"/>
+		<many-to-one name="teachDepart" column="KKYXID" not-null="true"/>
+		<many-to-one name="substitution" column="KTDKCID" />
+		<property name="termSeq" column="KKXQC" length="60"/>
+		<property name="credit" column="XF" not-null="true"/>
+		<property name="creditHour" column="XS" not-null="true"/>
+		<property name="weekHour" column="ZKS" not-null="true"/>
+		<many-to-one name="HSKDegree" column="HSKID"/>
+		<many-to-one name="courseGroup" column="KCZID" not-null="true"/>
+		<property name="remark" column="BZ" length="500"/>
+		
+		<bag name="preCourses" table="PYJH_ZY_XXKC_T" >			
+			<key column="PYJHKCID" not-null="true"/>			
+			<many-to-many column="XXKCID" class="com.shufe.model.system.baseinfo.Course"/>
+		</bag>
+	</class>
+		<query name="getPlanCourseByTerm">
+		<![CDATA[
+			select 
+			  planCourse
+			from
+			  PlanCourse as planCourse
+			  join planCourse.courseGroup as courseGroup
+			  join courseGroup.teachPlans as teachPlan
+			where 
+			  (:term is null or instr(planCourse.termSeq,:term)>0) and
+			  teachPlan.id = :teachPlanId
+		]]>
+	</query>
+</hibernate-mapping>

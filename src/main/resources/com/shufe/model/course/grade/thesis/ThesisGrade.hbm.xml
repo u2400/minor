@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- 论文成绩同步表-->
+<hibernate-mapping package="com.shufe.model.course.grade.thesis">
+	<class name="ThesisGrade" table="cj_lw_t">
+		<id name="id" column="id" unsaved-value="null">
+			<generator class="sequence">
+				<param name="sequence">SEQ_cj_lw_t</param>
+			</generator>
+		</id>
+		<property name="stdCode" column="XH"/>
+		<property name="grade" column="RXNFPC"/>
+		<property name="stdName" column="XM"/>
+		<property name="score" column="DF"/>
+		<property name="oldScoreText" column="ODJCJ"/>
+		<property name="newScoreText" column="NDJCJ"/>
+		<property name="courseGradeId" column="ZPCJID"/>
+		<property name="stdId" column="XSID"/>
+		<property name="majorId" column="ZYID"/>
+		<property name="courseId" column="KCID"/>
+		<property name="courseTypeId" column="KCLBID"/>
+		<property name="teachCalendarId" column="JXRLID"/>
+	</class>
+</hibernate-mapping>

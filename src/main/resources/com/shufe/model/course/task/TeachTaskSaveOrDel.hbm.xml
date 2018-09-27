@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.shufe.model.course.task">
+    <class name="TeachTaskSaveOrDel" table="JXRW_BC_SC_T"> 
+        <cache usage="read-write" region="taskCache"/>
+        <id name="id" column="id" unsaved-value="null">
+            <generator class="sequence">
+                <param name="sequence">SEQ_JXRW_BC_SC_T</param>
+            </generator>
+        </id>
+        <property name="courseseqNo" column="KCXH"/>
+        <property name="coursecode" column="KCH"/>
+		<property name="term" column="XQRQ"/>
+        <property name="courseName" column="KCMC"/>
+		<property name="courseType" column="KCLB"/>
+		<property name="credit" column="XF"/>
+        <property name="teachClass" column="JXB"/>
+		<property name="studentType" column="XSLB"/>
+        <property name="enrollTurn" column="SZNJ"/>
+		<property name="teachClassDepart" column="YX"/>
+		<property name="teachClassSpeciality" column="ZY"/>
+        <property name="teachClassAspect" column="ZYFX"/>
+		<property name="adminClassName" column="BJ"/>
+        <property name="planStdCount" column="JHRS"/>
+		<property name="stdCount" column="SJRS"/>
+		<property name="gender" column="XB"/>
+        <property name="roomConfigType" column="JSYQ"/>
+		<property name="isGuaPai" column="GP"/>
+        <property name="teachLangType" column="SKYY"/>
+		<property name="textbooks" column="JC"/>
+		<property name="referenceBooks" column="CKS"/>
+        <property name="cases" column="AL"/>
+		<property name="teachDepartName" column="KKYX"/>
+        <property name="arrangeInfoTeachers" column="JS"/>
+		<property name="courseUnits" column="KJC"/>
+		<property name="extInfoPeriod" column="ZKS"/>
+        <property name="weekUnits" column="ZZKS"/>
+		<property name="weeks" column="ZS"/>
+        <property name="teachWeek" column="JXZ"/>
+		<property name="weekStart" column="QSZ"/>
+		<property name="isArrangeComplete" column="SFPW"/>
+        <property name="schoolDistrict" column="XQ"/>
+		<property name="isElectable" column="SFCY"/>
+        <property name="isCancelable" column="SFYXTK"/>
+		<property name="maxCount" column="RSSX"/>
+		<property name="HSKDegree" column="HSKYS"/>
+        <property name="prerequisteCourses" column="XXKC"/>
+		<property name="minCount" column="RSXX"/>
+        <property name="remark" column="BZ"/>
+		<property name="seqno" column="XH"/>
+	    <property name="name" column="XM"/>
+        <property name="suggestTime" column="JYSJ"/>
+		<property name="suggestClass" column="JYBJ"/>
+        <property name="otherSuggest" column="QTJY"/>
+     </class>
+</hibernate-mapping>

@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class
+        name="com.ekingstar.eams.teach.abilityrate.model.CourseAbilityRateApplyConfig"
+        table="KCFJ_PZ_T">
+        <id name="id" column="ID" unsaved-value="null">
+            <generator class="sequence">
+                <param name="sequence">SEQ_KCFJ_PZ_T</param>
+            </generator>
+        </id>
+        <many-to-one name="calendar" column="JXRLID" not-null="true"/>
+        <property name="grade" column="NJ" not-null="true"/>
+        
+        <property name="beginAt" column="KSSJ" not-null="true"/>
+        <property name="endAt" column="JZSJ" not-null="true"/>
+        
+        <property name="upgradeNotice" column="SJTS" not-null="true"/>
+        <property name="degradeNotice" column="JJTS" not-null="true"/>
+        
+        <bag name="interviewInfos" inverse="true" cascade="all,delete-orphan">
+        	<key column="PZID"/>
+			<one-to-many
+				class="com.ekingstar.eams.teach.abilityrate.model.InterviewInfo"/>
+        </bag>
+        <bag name="subjects" inverse="true" cascade="all,delete-orphan">
+        	<key column="PZID"/>
+			<one-to-many
+				class="com.ekingstar.eams.teach.abilityrate.model.CourseAbilityRateSubject"/>
+        </bag>
+        <set name="abilities" table="KCFJ_PZ_DJ_T">
+            <key column="PZID" not-null="true"/>
+            <many-to-many class="com.ekingstar.eams.system.basecode.state.LanguageAbility"
+                column="DJID"/>
+        </set>
+        
+    </class>
+</hibernate-mapping>

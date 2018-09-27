@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+    
+    <bean name="/courseAbilityApply" autowire="byName" scope="prototype"
+        class="com.ekingstar.eams.teach.abilityrate.web.action.CourseAbilityApplyAction">
+        <property name="provider" ref="abilityScoreProvider"/>
+        <property name="checker" ref="abilitySignupChecker"/>
+    </bean>
+    
+    <bean name="/courseAbilityApplyConfig" autowire="byName" scope="prototype"
+        class="com.ekingstar.eams.teach.abilityrate.web.action.CourseAbilityApplyConfigAction">
+    </bean>
+    
+    <bean name="/courseAbilityApplyManage" autowire="byName" scope="prototype"
+        class="com.ekingstar.eams.teach.abilityrate.web.action.CourseAbilityApplyManageAction">
+        <property name="entityName" value="apply"/>
+        <property name="entityClass" value="com.ekingstar.eams.teach.abilityrate.model.CourseAbilityRateApply"/>
+    </bean>
+    
+    <bean name="abilityScoreProvider" class="com.ekingstar.eams.teach.abilityrate.service.AbilityScoreProvider" autowire="byName"/>
+    
+    <bean name="abilitySignupChecker" class="com.ekingstar.eams.teach.abilityrate.service.AbilitySignupChecker" autowire="byName">
+    	<property name="provider" ref="abilityScoreProvider"/>
+    </bean>
+    
+    <bean name="courseAbilityRateService" class="com.ekingstar.eams.teach.abilityrate.service.CourseAbilityRateServiceImpl" autowire="byName"/>
+</beans>

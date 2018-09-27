@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- 培养计划表 -->
+<hibernate-mapping package="com.shufe.model.course.plan.std">
+	<class name="StdTeachPlan" table="PYJH_XS_T">
+		<id name="id" column="ID" unsaved-value="null">
+			<generator class="sequence">
+				<param name="sequence">SEQ_PYJH_XS_T</param>
+			</generator>
+		</id>
+		<many-to-one name="speciality" column="ZYID"/>
+		<many-to-one name="aspect" column="ZYFXID"/>
+		<many-to-one name="std" column="XSID"/>
+		
+		<property name="termsCount" column="ZXQS" not-null="true"/>
+		<property name="credit" column="ZXF" not-null="true"/>
+		<property name="teacherNames" column="ZDJSMC" length="100"/>
+		<property name="remark" column="BZ" length="500"/>
+		<set name="courseGroups" table="PYJH_XS_KCZGL_T">
+			<key column="PYJHID" not-null="true"/>
+			<many-to-many class="com.shufe.model.course.plan.CourseGroup"
+				column="KCZID"/>
+		</set>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.shufe.model.course.scholarship.comprehensive"
+	auto-import="false">
+	<!-- 奖学金_规则_表 -->
+	<class name="ScoreStatisticRule" table="JXJ_GZ_T">
+		<id name="id" column="ID" unsaved-value="null">
+			<generator class="sequence">
+				<param name="sequence">SEQ_JXJ_GZ_T</param>
+			</generator>
+		</id>
+		<property name="name" column="GZMC" not-null="true" />
+		<property name="abbreviation" column="JC" not-null="true" />
+		<set name="itemValues" inverse="true" cascade="all-delete-orphan">
+			<key column="GZID" />
+			<one-to-many class="ScoreStatisticRuleItemValue" />
+		</set>
+	</class>
+	<!-- 奖学金_规则_加权_表 -->
+	<class name="ScoreStatisticRuleItemValue" table="JXJ_GZ_JQ_T">
+		<id name="id" column="ID" unsaved-value="null">
+			<generator class="sequence">
+				<param name="sequence">SEQ_JXJ_GZ_JQ_T</param>
+			</generator>
+		</id>
+		<many-to-one name="rule" column="GZID" not-null="true" />
+		<many-to-one name="ruleItem" column="GZXID" not-null="true" />
+		<!-- 权值 -->
+		<property name="value" column="QZ" not-null="true" />
+	</class>
+</hibernate-mapping>

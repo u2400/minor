@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- 毕业实习基地 -->
+<hibernate-mapping package="com.shufe.model.course.arrange.base">
+    <class name="GraduatePlace" table="BYSXJD_T">
+        <id name="id" column="id" unsaved-value="null">
+            <generator class="sequence">
+                <param name="sequence">SEQ_BYSXJD_T</param>
+            </generator>
+        </id>
+        <property name="name" column="DWMC" not-null="true"/>
+        <property name="addressInfo" column="DWSZD" not-null="true" length="500"/>
+        <many-to-one name="corporation" column="DWLXID" not-null="true"/>
+        <property name="isInSchool" column="SFXN" not-null="true"/>
+        <property name="assignOn" column="JYRQ" not-null="true"/>
+        <!-- 合作协议状态 -->
+        <property name="status" column="HZXYZT" not-null="true"/>
+        <property name="contactPerson" column="LXR" not-null="true"/>
+        <property name="contactInfo" column="LXFS" not-null="true" length="300"/>
+        <many-to-one name="department" column="SSBMID" not-null="true"/>
+        <!-- 接收实习生人数 -->
+        <property name="planStdCount" column="JSSXSRS" not-null="true"/>
+        <property name="enabled" column="SFYX"/>
+        <many-to-one name="operatorBy" column="CZRID" not-null="true"/>
+        <property name="createdAt" column="SCSJ" not-null="true"/>
+        <property name="updatedAt" column="XGSJ" not-null="true"/>
+        <property name="remark" column="BZ" length="500"/>
+     </class>
+</hibernate-mapping>

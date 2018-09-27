@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- 学期排课 -->
+<hibernate-mapping>
+	<class name="com.shufe.model.course.syllabus.Syllabus" table="KCDG_T"
+		discriminator-value="0">
+		<id name="id" column="id" unsaved-value="null">
+			<generator class="sequence">
+				<param name="sequence">SEQ_KCDG_T</param>
+			</generator>
+		</id>
+		<many-to-one name="course" column="KCID" not-null="true"/>
+		<!-- 大纲文件名称 -->
+		<property name="name" column="DGWJMC" not-null="true" length="2000"/>
+		<property name="path" column="DGWJLJ" not-null="true" length="2000"/>
+		<many-to-one name="uploadBy" column="SCZ" not-null="true"/>
+		<property name="uploadAt" column="SCSJ" not-null="true"/>
+	</class>
+</hibernate-mapping>

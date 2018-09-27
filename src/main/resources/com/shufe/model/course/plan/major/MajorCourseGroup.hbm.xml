@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- 培养计划课程组表 -->
+<hibernate-mapping package="com.shufe.model.course.plan.major">
+	<class name="MajorCourseGroup" table="PYJH_ZY_KCZ_T">
+		<id name="id" column="ID" unsaved-value="null">
+			<generator class="sequence">
+				<param name="sequence">SEQ_PYJH_ZY_KCZ_T</param>
+			</generator>
+		</id>
+		
+		<many-to-one name="courseType" column="KCLBID" not-null="true"/>
+		<many-to-one name="parentCourseType" column="FKCLBID" not-null="false"/>
+		
+		<property name="creditHour" column="ZXS" not-null="true"/>
+		<property name="credit" column="ZXF" not-null="true"/>
+		
+		<property name="creditPerTerms" column="XFFB" not-null="true" length="60"/>
+		<property name="weekHourPerTerms" column="ZKSFB" not-null="true"
+			length="60"/>
+		<set name="planCourses" inverse="true" cascade="all,delete-orphan">
+			<key column="KCZID" not-null="true"/>
+			<one-to-many class="com.shufe.model.course.plan.major.MajorPlanCourse"/>
+		</set>
+		<set name="teachPlans" inverse="true" table="PYJH_ZY_KCZGL_T">
+			<key column="KCZID" not-null="true"/>
+			<many-to-many class="com.shufe.model.course.plan.major.MajorTeachPlan" column="PYJHID"/>
+		</set>
+		<property name="remark" column="BZ" length="500"/>
+	</class>
+	<query name="getUsedCourseTypes">
+		<![CDATA[
+			select courseGroup.courseType
+			 from TeachPlan as plan join plan.courseGroups as courseGroup
+			 where plan=? 
+		]]>
+	</query>
+</hibernate-mapping>

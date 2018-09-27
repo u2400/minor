@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.shufe.model.std.alteration" >
+
+	<class name="StudentInfoAlterApply" table="XSXX_XGSQ_T">
+		<id name="id" column="ID"  unsaved-value="null">
+			<generator class="sequence">
+				<param name="sequence">SEQ_XSXX_XGSQ_T</param>
+			</generator>
+		</id>
+		<bag name="items" inverse="true" cascade="all,delete-orphan">
+			<key column="SQID" not-null="true"/>
+			<one-to-many class="com.shufe.model.std.alteration.StudentInfoAlterItem"/>
+		</bag>
+		<property name="passed"  column="SFTG"/>
+		<property name="auditAt"  column="SHSJ"/>
+		<property name="applyAt"  column="SQSJ"/>
+		<many-to-one name="student" column="XSID" not-null="true"/>
+		<many-to-one name="auditor" column="SHRID"  class="com.ekingstar.security.User" />
+		<property name="ip"  column="IPDZ"/>
+	</class>
+	
+</hibernate-mapping>

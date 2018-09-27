@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- 毕业实习基地选课开关学生名单 -->
+<hibernate-mapping package="com.shufe.model.course.arrange.base">
+    <class name="PlaceTake" table="BYSXJD_XKKG_XKXS_T">
+        <id name="id" column="id" unsaved-value="null">
+            <generator class="sequence">
+                <param name="sequence">SEQ_BYSXJD_XKKG_XKXS_T</param>
+            </generator>
+        </id>
+        <many-to-one name="switchPlace" column="KGPZID" not-null="true"/>
+        <many-to-one name="student" column="XSID" not-null="true"/>
+        <!-- 选课时间  -->
+        <property name="createdAt" column="XKSJ" not-null="true"/>
+    </class>
+</hibernate-mapping>

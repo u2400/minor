@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- 专业替代课程表 -->
+<hibernate-mapping>
+    <class
+        name="com.ekingstar.eams.teach.program.major.model.MajorSubstituteCourse"
+        entity-name="com.ekingstar.eams.teach.program.major.MajorSubstituteCourse"
+        table="PYFA_ZYTDKC_T">
+        <cache usage="read-write" region="taskCache"/>
+        <id name="id" column="ID" unsaved-value="null">
+            <generator class="sequence">
+                <param name="sequence">SEQ_PYFA_ZYTDKC_T</param>
+            </generator>
+        </id>
+        <property name="enrollTurn" column="SZNJ" not-null="true"/>
+        <many-to-one name="stdType" column="XSLBID" not-null="true"/>
+        <many-to-one name="major" column="ZYID"/>
+        <many-to-one name="department" column="YXID"
+            class="com.shufe.model.system.baseinfo.Department"/>
+        <many-to-one name="majorField" column="ZYFXID"/>
+        <set name="origins" table="PYFA_ZYTDKC_THQKC_T">
+        	<cache usage="read-write" region="taskCache"/>
+            <key column="ZYTDKCID" not-null="true"/>
+            <many-to-many class="com.shufe.model.system.baseinfo.Course"
+                column="KCID"/>
+        </set>
+        <set name="substitutes" table="PYFA_ZYTDKC_THHKC_T">
+            <cache usage="read-write" region="taskCache"/>
+            <key column="ZYTDKCID" not-null="true"/>
+            <many-to-many class="com.shufe.model.system.baseinfo.Course"
+                column="KCID"/>
+        </set>
+        <property name="createAt" column="ZDSJ"/>
+        <property name="modifyAt" column="XGSJ"/>
+        <many-to-one name="operateBy" column="CZR" not-null="true"/>
+        <property name="remark" column="BZ" length="500"/>
+    </class>
+</hibernate-mapping>

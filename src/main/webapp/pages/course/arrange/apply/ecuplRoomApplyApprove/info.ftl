@@ -1,0 +1,1 @@
+<#include "../roomApply/info.ftl"/>

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+   "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.shufe.model.course.textbook">
+	<class name="Textbook" table="JCXX_T">
+		<id name="id" column="ID" unsaved-value="null">
+			<generator class="sequence">
+				<param name="sequence">SEQ_JCXX_T</param>
+			</generator>
+		</id>
+		<property name="code" column="JCDM" unique="true" not-null="true"/>
+		<property name="name" column="JCMC" not-null="true"/>
+		<property name="auth" column="JCZZ" />
+		<property name="ISBN" column="ISBN"/>
+		<property name="remark" column="BZ"/>
+		<property name="price" column="JG" />
+		<property name="onSell" column="ZK"/>
+		<many-to-one name="press"  column="CBSID"/>
+		
+		<many-to-one name="bookType"  column="JCLXID"/>
+		<many-to-one name="awardLevel"  column="JCHJDJID"/>
+		<property name="publishedOn" column="CBNY"/>
+		<property name="courseName"  column="KCMC"/>
+	</class>
+	
+</hibernate-mapping>

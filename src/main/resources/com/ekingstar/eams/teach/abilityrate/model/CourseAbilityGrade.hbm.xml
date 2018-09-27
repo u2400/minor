@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class
+        name="com.ekingstar.eams.teach.abilityrate.model.CourseAbilityGrade"
+        table="KCFJ_CJ_T">
+        <id name="id" column="ID" unsaved-value="null">
+            <generator class="sequence">
+                <param name="sequence">SEQ_KCFJ_CJ_T</param>
+            </generator>
+        </id>
+        <many-to-one name="apply" column="SQID" not-null="true"/>
+        <many-to-one name="subject" column="KMID" not-null="true"/>
+        <property name="score" column="FS" not-null="true"/>
+    </class>
+</hibernate-mapping>

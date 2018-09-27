@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.shufe.model.std.exemption" >
+    <!-- 学生_推免_申请开关_表 -->
+	<class name="ApplySwitch" table="XS_TM_SQKG_T">
+		<id name="id" column="ID">
+			<generator class="sequence">
+				<param name="sequence">SEQ_XS_TM_SQKG_T</param>
+			</generator>
+		</id>
+		<many-to-one name="calendar" column="JXRLID" not-null="true"/>
+		<property name="fromAt" column="KSSJ" not-null="true"/>
+		<property name="endAt" column="JSSJ" not-null="true"/>
+		<many-to-one name="operator" column="CZRID" not-null="true"/>
+		<property name="updateAt" column="GXSJ" not-null="true"/>
+	</class>
+</hibernate-mapping>

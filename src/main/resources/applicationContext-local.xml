@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="degreeGpaService"
+        class="com.shufe.service.std.graduation.audit.impl.BestDegreeGpaServiceImpl"
+        autowire="byName"/>
+		
+	<bean id="gradeCalculatorFactory"
+		class="com.ekingstar.eams.course.grade.course.calculator.CalculatorFactory">
+		<property name="utilDao" ref="utilDao"/>
+		<property name="calcualtorClass" value="com.ekingstar.eams.course.grade.course.calculator.Less50Calculator"/>
+	</bean>
+	<bean id="electCourseService"
+		class="com.shufe.service.course.election.impl.EcuplElectCourseServiceImpl"
+		autowire="byName">
+	</bean>
+	
+    <bean id="ssoUserProvider"
+        class="com.ekingstar.eams.system.security.service.impl.EcuplSsoUserProviderImpl">
+        <!--<property name="clientFile" value="/wiscom-client.properties"/>-->
+    </bean>
+	
+	<bean id="securityMonitor"
+		class="com.ekingstar.security.monitor.DefaultSecurityMonitor" autowire="byName">
+		<property name="rememberMeService" ref="rememberMeService"/>
+		<property name="sessionController" ref="sessionController"/>
+		<property name="authorityDecisionService" ref="authorityDecisionService"/>
+		<property name="httpSessionIntegrationFilter" ref="httpSessionIntegrationFilter"/>
+		<property name="providers">
+			<list>
+				<ref bean="ssoUserProvider"></ref>
+				<ref bean="daoUserProvider"></ref>
+			</list>
+		</property>
+	</bean>
+</beans>

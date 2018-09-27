@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class
+        name="com.ekingstar.eams.teach.abilityrate.model.CourseAbilityRateApply"
+        table="KCFJ_SQ_T">
+        <id name="id" column="ID" unsaved-value="null">
+            <generator class="sequence">
+                <param name="sequence">SEQ_KCFJ_SQ_T</param>
+            </generator>
+        </id>
+        <property name="createdAt" column="CJSJ" not-null="true"/>
+        <property name="updatedAt" column="GXSJ" not-null="true"/>
+        <many-to-one name="config" column="PZID" not-null="true"/>
+        <many-to-one name="std" column="XSID" not-null="true"/>
+        <many-to-one name="originAbility" column="YDJID" not-null="true"/>
+        <many-to-one name="applyAbility" column="SQDJID" not-null="true"/>
+        <many-to-one name="calendar" column="JXRLID" not-null="true"/>
+        <property name="mobilephone" column="LXDH" not-null="true"/>
+        <property name="address" column="LXDZ" not-null="true"/>
+        <property name="passed" column="SFTG" not-null="true"/>
+        <many-to-one name="interview" column="MSXXID"/>
+        <set name="grades"  inverse="true" cascade="all,delete-orphan">
+        	<key column="SQID"/>
+			<one-to-many
+				class="com.ekingstar.eams.teach.abilityrate.model.CourseAbilityGrade"/>
+        </set>
+    </class>
+</hibernate-mapping>

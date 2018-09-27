@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.shufe.model.std.bursary" >
+	<class name="BursaryAward" table="zxj_jx_t">
+	    <cache usage="read-write" />
+		<id name="id" column="ID">
+			<generator class="sequence">
+				<param name="sequence">SEQ_zxj_jx_t</param>
+			</generator>
+		</id>
+		<property name="name" column="MC"  not-null="true" length="300"/>
+		<list name="subjects" table="zxj_jx_cszt_t">
+            <cache usage="read-write" />
+            <key column="JXID" not-null="true"/>
+            <index column= "XL"/>
+            <many-to-many class="com.shufe.model.std.bursary.BursaryStatementSubject" column="CSZTID" />
+        </list>
+	</class>
+</hibernate-mapping>

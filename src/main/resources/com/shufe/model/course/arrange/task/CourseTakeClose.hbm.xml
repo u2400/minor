@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- 教学班中的单个别学生修读信息 -->
+<hibernate-mapping package="com.shufe.model.course.arrange.task">
+	<class name="CourseTakeClose" table="BKKXS_T">
+		<id name="id" column="id" unsaved-value="null">
+			<generator class="sequence">
+				<param name="sequence">SEQ_JXRW_RSXZ_T</param>
+			</generator>
+		</id>
+		<!-- 一个学生只能参加一次教学任务的课程 -->
+		<!-- natural-id -->
+		<many-to-one name="projectClosePlan" column="BKKID" not-null="true"/>
+		<many-to-one name="student" column="XSID" not-null="true"/>
+		<many-to-one name="courseTakeType" column="XDLBID" not-null="true"/>
+		<many-to-one name="courseGrade" column="CJID"/>
+		<property name="isCourseEvaluated" column="SFPJWC" />
+		<map name="examTakes" cascade="all" inverse="true">
+			<key column="JXBXSID"/>
+			<map-key type="long" column="KSLXID"/>
+			<one-to-many class="com.shufe.model.course.arrange.exam.ExamTake"/>
+		</map>
+	</class>
+</hibernate-mapping>

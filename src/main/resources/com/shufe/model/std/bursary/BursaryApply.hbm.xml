@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.shufe.model.std.bursary" >
+	<class name="BursaryApply" table="zxj_sq_t">
+		<id name="id" column="ID">
+			<generator class="sequence">
+				<param name="sequence">SEQ_zxj_sq_t</param>
+			</generator>
+		</id>
+		<many-to-one name="std" column="XSID"  not-null="true"/>
+		<many-to-one name="award" column="JXID"  not-null="true"/>
+		<many-to-one name="setting" column="KGID"  not-null="true"/>
+		<many-to-one name="gradeAchivement" column="PDJGID" />
+		<property name="moralGradeClassRank" column="DYCJBJPM"/>
+		<property name="applyAt" not-null="true" column="SQSJ"/>
+		<property name="submited" not-null="true" column="SFTJ"/>
+		<property name="instructorApproved" column="FDYSFTY"/>
+		<property name="instructorOpinion" length="1200" column="FDYYJ"/>
+		<property name="collegeApproved" column="YXSFTY"/>
+		<property name="collegeOpinion" length="1200" column="YXYJ"/>
+		<property name="approved" column="SFTG"/>
+		<property name="schoolOpinion" length="1200" column="XXYJ"/>
+		<map name="statements" cascade="all" table="zxj_cs_t">
+           <key column="SQID"/>
+           <map-key-many-to-many class="com.shufe.model.std.bursary.BursaryStatementSubject" column="ZTID"/>
+           <element column="NR" type="string"/>
+        </map>
+        <property name="attachment" length="500" column="FJ"/>
+	</class>
+</hibernate-mapping>

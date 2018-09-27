@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- 教学任务表
+	业务主键，教学日历id和课程序号。 -->
+
+<hibernate-mapping package="com.shufe.model.course.task" >
+	<class name="GenderLimitGroup" table="JXRW_RSXZ_T">
+        <cache usage="read-write" region="taskCache"/>
+		<id name="id" column="id" unsaved-value="null">
+			<generator class="sequence">
+				<param name="sequence">SEQ_JXRW_RSXZ_T</param>
+			</generator>
+		</id>
+		
+		<many-to-one name="task" column="JXRWID" not-null="true"/>
+		<many-to-one name="gender" column="XBID" not-null="true"/>
+		<property name="limitCount" column="RSSX"/>
+		<property name="count" column="RS" not-null="true"/>
+	</class>
+</hibernate-mapping>

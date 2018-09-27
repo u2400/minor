@@ -1,0 +1,1 @@
+<#include "../graduatePlace/info.ftl"/>

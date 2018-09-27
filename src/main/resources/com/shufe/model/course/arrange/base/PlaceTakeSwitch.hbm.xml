@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- 毕业实习基地选课开关 -->
+<hibernate-mapping package="com.shufe.model.course.arrange.base">
+    <class name="PlaceTakeSwitch" table="BYSXJD_XKKG_T">
+        <id name="id" column="id" unsaved-value="null">
+            <generator class="sequence">
+                <param name="sequence">SEQ_BYSXJD_XKKG_T</param>
+            </generator>
+        </id>
+        <property name="name" column="KGMC" not-null="true"/>
+        <!-- 年级串 -->
+        <property name="grades" column="NJC" not-null="true"/>
+        <property name="beginOn" column="QSRQ" not-null="true"/>
+        <property name="endOn" column="JSRQ" not-null="true"/>
+        <set name="stdTypes" table="BYSXJD_XKKG_XSLB_T">
+            <key column="XKKGID"/>
+            <many-to-many column="XSLBID"
+                class="com.ekingstar.eams.system.baseinfo.StudentType"/>
+        </set>
+        <set name="departments" table="BYSXJD_XKKG_YX_T">
+            <key column="XKKGID"/>
+            <many-to-many column="YXID"
+                class="com.shufe.model.system.baseinfo.Department"/>
+        </set>
+        <property name="open" column="SFSY" not-null="true"/>
+        <set name="switchPlaces" inverse="true" cascade="all-delete-orphan">
+            <key column="KGPZID"/>
+            <!-- 开关配置ID -->
+            <one-to-many class="SwitchPlace"/>
+        </set>
+    </class>
+</hibernate-mapping>
